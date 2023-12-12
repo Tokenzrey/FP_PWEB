@@ -1,0 +1,82 @@
+CREATE TABLE Account (
+  AccountID CHAR(6) NOT NULL,
+  email varchar(255) NOT NULL,
+  Username VARCHAR(100) NOT NULL,
+  Password VARCHAR(200) NOT NULL,
+  name varchar(255) NOT NULL,
+  Role VARCHAR(50) NOT NULL,
+  photo varchar(255) NOT NULL,
+  PRIMARY KEY (AccountID)
+);
+
+CREATE TABLE OrangTua (
+  OrangTuaID CHAR(6) NOT NULL,
+  AccountID CHAR(6) NOT NULL,
+  FirstName VARCHAR(100) NOT NULL,
+  LastName VARCHAR(100) NOT NULL,
+  Email VARCHAR(15) NOT NULL,
+  NoTelp VARCHAR(15) NOT NULL,
+  Address VARCHAR(150) NOT NULL,
+  PRIMARY KEY (OrangTuaID),
+  FOREIGN KEY (AccountID) REFERENCES Account (AccountID)
+);
+
+CREATE TABLE Guru (
+  GuruID CHAR(6) NOT NULL,
+  AccountID CHAR(6) NOT NULL,
+  FirstName VARCHAR(100) NOT NULL,
+  LastName VARCHAR(100) NOT NULL,
+  Email VARCHAR(15) NOT NULL,
+  NoTelp VARCHAR(15) NOT NULL,
+  Address VARCHAR(150) NOT NULL,
+  PRIMARY KEY (GuruID),
+  FOREIGN KEY (AccountID) REFERENCES Account (AccountID)
+);
+
+CREATE TABLE Siswa (
+  SiswaID CHAR(6) NOT NULL,
+  OrangTuaID CHAR(6) NOT NULL,
+  AccountID CHAR(6) NOT NULL,
+  FirstName VARCHAR(100) NOT NULL,
+  LastName VARCHAR(100) NOT NULL,
+  ParentName VARCHAR(150) NOT NULL,
+  TempatLahir VARCHAR(50) NOT NULL,
+  TanggalLahir DATETIME NOT NULL,
+  Email VARCHAR(50) NOT NULL,  -- Adjusted length
+  NoTelp VARCHAR(15) NOT NULL,
+  Address VARCHAR(150) NOT NULL,
+  Foto VARCHAR(250) NOT NULL,
+  PRIMARY KEY (SiswaID),
+  FOREIGN KEY (OrangTuaID) REFERENCES OrangTua (OrangTuaID),
+  FOREIGN KEY (AccountID) REFERENCES Account (AccountID)
+);
+
+CREATE TABLE Classroom (
+  ClassroomID CHAR(6) NOT NULL,
+  GuruID CHAR(6) NOT NULL,
+  NamaKelas VARCHAR(20) NOT NULL,
+  LinkTelegram VARCHAR(100) NOT NULL,
+  PRIMARY KEY (ClassroomID),
+  FOREIGN KEY (GuruID) REFERENCES Guru (GuruID)
+);
+
+CREATE TABLE Materi (
+  MateriID CHAR(6) NOT NULL,
+  SiswaID CHAR(6) NOT NULL,
+  ClassroomID CHAR(6) NOT NULL,
+  IsiMateri LONGVARCHAR NOT NULL,
+  PRIMARY KEY (MateriID),
+  FOREIGN KEY (SiswaID) REFERENCES Siswa (SiswaID),
+  FOREIGN KEY (ClassroomID) REFERENCES Classroom (ClassroomID)
+);
+
+CREATE TABLE Nilai (
+  NilaiID CHAR(6) NOT NULL,
+  SiswaID CHAR(6) NOT NULL,
+  ClassroomID CHAR(6) NOT NULL,
+  Nilai INT NOT NULL,
+  Keterangan VARCHAR(50) NOT NULL,
+  PRIMARY KEY (NilaiID),
+  FOREIGN KEY (SiswaID) REFERENCES Siswa (SiswaID),
+  FOREIGN KEY (ClassroomID) REFERENCES Classroom (ClassroomID)
+);

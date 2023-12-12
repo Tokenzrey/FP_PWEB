@@ -1,0 +1,285 @@
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	display: inline;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 100%;
+	box-sizing: border-box;
+}
+body {
+	height: 100%;
+	margin: 0;
+	background: #c1bdba;
+	font-family: "Titillium Web", sans-serif;
+}
+a {
+	background-color: transparent;
+}
+a:active,
+a:hover {
+	outline: 0;
+}
+button,
+input {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+}
+button {
+	overflow: visible;
+	text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="submit"] {
+	cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+input {
+	line-height: normal;
+}
+
+a {
+	text-decoration: none;
+	color: #1ab188;
+	-webkit-transition: 0.5s ease;
+	transition: 0.5s ease;
+}
+a:hover {
+	color: #179b77;
+}
+
+.content {
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 50px;
+	justify-content: center;
+	align-items: center;
+}
+
+.error-msg {
+	font-size: 14px;
+	text-align: center;
+	display: none;
+	justify-content: center;
+	color: rgb(255, 54, 54);
+	letter-spacing: 2px;
+}
+.form {
+	width: 100%;
+	max-width: 400px;
+	background: rgba(19, 35, 47, 0.9);
+	padding: 40px;
+	border-radius: 4px;
+	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.tab-group {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 40px 0;
+}
+
+.tab-group .tab {
+	width: 50%;
+}
+.tab-group li a {
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	background: rgba(160, 179, 176, 0.25);
+	color: #a0b3b0;
+	font-size: 20px;
+	float: left;
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: 0.5s ease;
+	transition: 0.5s ease;
+}
+.tab-group li a:hover {
+	background: #179b77;
+	color: #ffffff;
+}
+.tab-group .active a {
+	background: #1ab188;
+	color: #ffffff;
+}
+
+.tab-content > div:last-child {
+	display: none;
+}
+
+h1 {
+	font-size: 2em;
+	text-align: center;
+	color: #ffffff;
+	font-weight: 300;
+	margin: 0 0 40px;
+}
+
+label {
+	position: absolute;
+	-webkit-transform: translateY(6px);
+	transform: translateY(6px);
+	left: 13px;
+	color: rgba(255, 255, 255, 0.5);
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	pointer-events: none;
+	font-size: 22px;
+}
+label .req {
+	margin: 2px;
+	color: #1ab188;
+}
+
+label.active {
+	-webkit-transform: translateY(50px);
+	transform: translateY(50px);
+	left: 2px;
+	font-size: 14px;
+}
+label.active .req {
+	opacity: 0;
+}
+
+label.highlight {
+	color: #ffffff;
+}
+
+input,
+textarea {
+	font-size: 22px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 5px 10px;
+	background: none;
+	background-image: none;
+	border: 1px solid #a0b3b0;
+	color: #ffffff;
+	border-radius: 0;
+	-webkit-transition: border-color 0.25s ease, box-shadow 0.25s ease;
+	transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+input:focus,
+textarea:focus {
+	outline: 0;
+	border-color: #1ab188;
+}
+
+textarea {
+	border: 2px solid #a0b3b0;
+	resize: vertical;
+}
+
+.top-row {
+	display: flex;
+	flex-direction: column;
+}
+.top-row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.field-wrap {
+	position: relative;
+	margin-bottom: 40px;
+	width: 100%;
+}
+
+.button {
+	border: 0;
+	outline: none;
+	border-radius: 0;
+	padding: 15px 0;
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	background: #1ab188;
+	color: #ffffff;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.button:hover,
+.button:focus {
+	background: #179b77;
+}
+
+.button-block {
+	display: block;
+	width: 100%;
+}
+
+.forgot {
+	margin-top: -20px;
+	text-align: right;
+}
+
+@media only screen and (max-width: 390px) {
+	.error-msg {
+		font-size: 10px;
+	}
+	.tab-group {
+		flex-direction: column;
+		margin: 0 0 20px 0;
+	}
+	.tab-group li {
+		width: 100% !important;
+	}
+	.tab-group li a {
+		padding: 5px;
+		font-size: 15px;
+		width: 100%;
+	}
+
+	#signup > h1,
+	#login > h1 {
+		font-size: 7vw;
+		margin: 0 0 20px 0;
+	}
+
+	.field-wrap {
+		margin-bottom: 35px;
+	}
+	.field-wrap label {
+		font-size: 4.5vw;
+	}
+	.field-wrap label.active {
+		transform: translateY(36px);
+	}
+	.field-wrap input {
+		font-size: 15px;
+	}
+
+	.button {
+		font-size: 5.5vw;
+		padding: 10px;
+	}
+}
+@media only screen and (min-width: 1024px) {
+	.error-msg {
+		font-size: 22px;
+	}
+	.form {
+		max-width: 900px;
+	}
+}
